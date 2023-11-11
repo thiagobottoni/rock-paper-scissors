@@ -12,7 +12,7 @@ function getComputerChoice() {
             return "SCISSORS";
             break;
         default:
-            return "Error 001";
+            console.error("Error 001: Unexpected choice");
     }
 }
 
@@ -62,7 +62,7 @@ function game() {
             playerScore++;
             computerScore++;
         } else {
-            console.log("Error 002");
+            console.error("Error 002: Unexpected combination");
             break;
         }
     } while (
