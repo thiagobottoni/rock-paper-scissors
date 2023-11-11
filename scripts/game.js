@@ -34,6 +34,7 @@ function play(player, computer) {
             ) {
                 return 0;
             } else {
+                console.warn("Expected ROCK, PAPER or SCISSORS. Received " + player + " and " + computer);
                 return -1;
             }
 }
