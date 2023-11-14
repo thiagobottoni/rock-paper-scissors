@@ -4,16 +4,16 @@
 <head>
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles/styles.css" />
-    <script src="scripts/game.js"></script>
+    <script src="scripts/game.js" defer></script>
 </head>
 
 <body>
     <p><span id="round">ROUND 1/5</span><br>
-    What's your choice?</p>
+        What's your choice?</p>
     <div class="choices-container">
-        <button type="button" id="rock">Rock</button>
-        <button type="button" id="paper">Paper</button>
-        <button type="button" id="scissors">Scissors</button>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
     </div>
     <br>
     <div class="results-container">
@@ -24,6 +24,12 @@
     <br>
     <div class="new-game">
         <button type="button" disabled>New Game</button>
+    </div>
+    <br>
+    <div class="round-tracker">
+        <p>
+            Round Tracker:
+        </p>
     </div>
 </body>
 

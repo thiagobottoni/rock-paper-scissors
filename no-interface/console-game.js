@@ -39,7 +39,38 @@ function play(player, computer) {
             }
 }
 
-const rock = document.querySelector('#rock');
-rock.addEventListener('click', () => {
-    console.log("Hello World");
-});
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    do {
+        let playerChoice = prompt("Whats your choice? Rock, paper or scissors?").toUpperCase();
+
+        let computerChoice = getComputerChoice();
+
+        let gameResult = play(playerChoice, computerChoice);
+
+        if (gameResult === 1) {
+            console.log("You win! " + playerChoice + " beats " + computerChoice);
+            playerScore++;
+        } else
+        if (gameResult === 0) {
+            console.log("You lose! " + computerChoice + " beats " + playerChoice);
+            computerScore++;
+        } else
+        if (gameResult === 2) {
+            console.log("It's a tie!");
+            playerScore++;
+            computerScore++;
+        } else {
+            console.error("Error 002: Unexpected combination");
+            break;
+        }
+    } while (
+        (playerScore < 5) && (computerScore < 5)
+    )
+
+    console.log("GAME RESULTS: \n PLAYER: " + playerScore + "\n COMPUTER: " + computerScore);
+}
+
+game();
