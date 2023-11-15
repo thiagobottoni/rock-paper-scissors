@@ -8,12 +8,12 @@
 </head>
 
 <body>
-    <p><span class="title">ROUND 1/5</span><br>
-        What's your choice?</p>
+    <p class="title">ROUND <span id="round">0</span><br></p>
+    <p>What's your choice?</p>
     <div class="choices-container">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        <button id="rock" class="btn-game" disabled>Rock</button>
+        <button id="paper" class="btn-game" disabled>Paper</button>
+        <button id="scissors" class="btn-game" disabled>Scissors</button>
     </div>
     <br>
     <div class="results-container">
@@ -23,10 +23,10 @@
     </div>
     <br>
     <div class="new-game">
-        <button type="button" disabled>New Game</button>
+        <button id="new-game">New Game</button>
     </div>
     <br>
-    <div class="round-tracker">
+    <div id="round-tracker">
         <p id="tracker">
             <span class="title">Round Tracker:</span>
         </p>

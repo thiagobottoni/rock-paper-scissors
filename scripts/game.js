@@ -1,10 +1,26 @@
-const buttons = document.querySelectorAll('button');
+// Initialize the global variable to count rounds
+let round = 0;
+
+const buttons = document.querySelectorAll(".btn-game");
 buttons.forEach((button) => {
-    button.addEventListener('click', () => {
+    button.addEventListener("click", () => {
         const computerChoice = getComputerChoice();
         const playerChoice = button.id.toUpperCase();
         play(playerChoice, computerChoice);
     });
+});
+
+const newGame = document.querySelector("#new-game");
+newGame.addEventListener("click", () => {
+    document.querySelectorAll(".btn-game").forEach(btn => {
+        btn.disabled = false;
+    });
+    round = 1;
+    document.getElementById("round").innerHTML = round;
+    resetPoints();
+    document.querySelectorAll(".log-messages").forEach(function(logs) {
+        logs.remove();
+    })
 });
 
 function getComputerChoice() {
@@ -31,6 +47,7 @@ function play(player, computer) {
         addPoint("player");
         addPoint("computer");
         logRoundResult("tie", player, computer);
+        startNewRound();
     } else
         if (
             (player === "ROCK") && (computer === "SCISSORS") ||
@@ -40,6 +57,7 @@ function play(player, computer) {
             console.log("Player wins");
             addPoint("player");
             logRoundResult("player", player, computer);
+            startNewRound();
         } else
             if (
                 (computer === "ROCK") && (player === "SCISSORS") ||
@@ -49,6 +67,7 @@ function play(player, computer) {
                 console.log("Computer wins");
                 addPoint("computer");
                 logRoundResult("computer", computer, player);
+                startNewRound();
             } else {
                 console.error("Error 002: Unexpected combination! Expected ROCK, PAPER or SCISSORS. Received " + player + " and " + computer);
             }
@@ -60,22 +79,32 @@ function addPoint(whom) {
     document.getElementById(whom + "-points").innerHTML = playerPoints + 1;
 }
 
+function resetPoints() {
+    document.getElementById("player-points").innerHTML = 0;
+    document.getElementById("computer-points").innerHTML = 0;
+}
+
 // The winner parameter must be "player", "computer" or "tie"
 function logRoundResult(winner, winnerChoice, loserChoice) {
     let logMessage = "";
 
     if (winner === "player") {
-        logMessage = "You win! " + winnerChoice + " beats " + loserChoice;
+        logMessage = "Round #" + round + ": You win! " + winnerChoice + " beats " + loserChoice;
     } else
         if (winner === "computer") {
-            logMessage = "You lose! " + winnerChoice + " beats " + loserChoice;
+            logMessage = "Round #" + round + ": You lose! " + winnerChoice + " beats " + loserChoice;
         } else {
-            logMessage = "It's a tie!";
+            logMessage = "Round #" + round + ": It's a tie!";
         }
 
     const tracker = document.getElementById("tracker");
     const log = document.createTextNode(logMessage);
-    const newLine = document.createElement("br");
-    tracker.appendChild(newLine);
-    tracker.appendChild(log);
+    const newLine = document.createElement("p");
+    tracker.appendChild(newLine).className = "log-messages";
+    newLine.appendChild(log);
+}
+
+function startNewRound() {
+    round++;
+    document.getElementById("round").innerHTML = round;
 }
