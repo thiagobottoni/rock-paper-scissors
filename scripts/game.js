@@ -41,5 +41,53 @@ function play(player, computer) {
 
 const rock = document.querySelector('#rock');
 rock.addEventListener('click', () => {
-    console.log("Hello World");
+    const computerChoice = getComputerChoice();
+    const playerChoice = "ROCK";
+    const roundResult = play(playerChoice, computerChoice);
+
+    if (roundResult === 1) {
+        console.log("Player wins");
+        addPoint("player");
+        logRoundResult("player", playerChoice, computerChoice);
+    } else
+        if (roundResult === 0) {
+            console.log("Computer wins");
+            addPoint("computer");
+            logRoundResult("computer", computerChoice, playerChoice);
+        } else
+            if (roundResult === 2) {
+                console.log("It's a tie!");
+                addPoint("player");
+                addPoint("computer");
+                logRoundResult("tie", playerChoice, computerChoice);
+            }
+            else {
+                console.error("Error 002: Unexpected combination");
+            }
 });
+
+// The parameter for funcion must be "player" or "computer"
+function addPoint(whom) {
+    let playerPoints = parseInt(document.getElementById(whom + "-points").innerHTML, 10);
+    document.getElementById(whom + "-points").innerHTML = playerPoints + 1;
+}
+
+// The winner parameter must be "player", "computer" or "tie"
+function logRoundResult(winner, winnerChoice, loserChoice) {
+    let logMessage = "";
+
+    if (winner === "player") {
+        logMessage = "You win! " + winnerChoice + " beats " + loserChoice;
+    } else
+        if (winner === "computer") {
+            logMessage = "You lose! " + winnerChoice + " beats " + loserChoice;
+        } else {
+            logMessage = "It's a tie!";
+        }
+
+    const tracker = document.getElementById("tracker");
+    const log = document.createTextNode(logMessage);
+    const newLine = document.createElement("br");
+    tracker.appendChild(newLine);
+    tracker.appendChild(log);
+}

@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <p><span id="round">ROUND 1/5</span><br>
+    <p><span class="title">ROUND 1/5</span><br>
         What's your choice?</p>
     <div class="choices-container">
         <button id="rock">Rock</button>
@@ -17,9 +17,9 @@
     </div>
     <br>
     <div class="results-container">
-        <span id="results">RESULTS:</span> <br>
-        Player: 0 points <br>
-        Computer: 0 points
+        <span class="title">RESULTS:</span> <br>
+        Player: <span id="player-points">0</span> points <br>
+        Computer: <span id="computer-points">0</span> points
     </div>
     <br>
     <div class="new-game">
@@ -27,8 +27,8 @@
     </div>
     <br>
     <div class="round-tracker">
-        <p>
-            Round Tracker:
+        <p id="tracker">
+            <span class="title">Round Tracker:</span>
         </p>
     </div>
 </body>
