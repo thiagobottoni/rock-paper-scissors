@@ -1,11 +1,16 @@
-// Initializing global variables to count rounds and points
+// GLOBAL VARIABLES
+// Initializes global variables to count rounds and points
 let round = 0;
 let playerPoints = 0;
 let computerPoints = 0;
 
-// Configuring button listeners to start a new round
-const buttons = document.querySelectorAll(".btn-game");
-buttons.forEach((button) => {
+// Page buttons
+const gameButtons = document.querySelectorAll(".btn-game");
+const newGame = document.querySelector("#new-game");
+
+// EVENT LISTENERS
+// Starts a new round
+gameButtons.forEach((button) => {
     button.addEventListener("click", () => {
         const computerChoice = getComputerChoice();
         const playerChoice = button.id.toUpperCase();
@@ -13,8 +18,7 @@ buttons.forEach((button) => {
     });
 });
 
-// Configuring button to start a new game and reset current game stats
-const newGame = document.querySelector("#new-game");
+// Starts a new game
 newGame.addEventListener("click", () => {
     document.querySelectorAll(".btn-game").forEach(btn => {
         btn.disabled = false;
@@ -27,6 +31,8 @@ newGame.addEventListener("click", () => {
     });
 });
 
+// GAME FUNCTIONS
+// Randomly gets the computer choice
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3) + 1;
 
@@ -45,13 +51,11 @@ function getComputerChoice() {
     }
 }
 
+// Plays a round
 function play(player, computer) {
     if (player === computer) {
-        addPoint("player");
-        addPoint("computer");
         logRoundResult("tie", player, computer);
         startNewRound();
-        checkResults();
     } else
         if (
             (player === "ROCK") && (computer === "SCISSORS") ||
@@ -77,6 +81,7 @@ function play(player, computer) {
             }
 }
 
+// Increments a point to the winner
 // The parameter for funcion must be "player" or "computer"
 function addPoint(whom) {
     if (whom === "player") {
@@ -91,6 +96,7 @@ function addPoint(whom) {
         }
 }
 
+// Resets game by setting points to zero and removing the winner highlight
 function resetPoints() {
     playerPoints = 0;
     computerPoints = 0;
@@ -100,6 +106,7 @@ function resetPoints() {
     document.getElementById("computer").style.removeProperty("background-color");
 }
 
+// Logs the round result to the tracker panel
 // The winner parameter must be "player", "computer" or "tie"
 function logRoundResult(winner, winnerChoice, loserChoice) {
     let logMessage = "";
@@ -112,7 +119,7 @@ function logRoundResult(winner, winnerChoice, loserChoice) {
         } else {
             logMessage = "Round #" + round + ": It's a tie!";
         }
-
+    // Manipulates DOM elements to append the round result
     const tracker = document.getElementById("tracker");
     const log = document.createTextNode(logMessage);
     const newLine = document.createElement("p");
@@ -120,11 +127,13 @@ function logRoundResult(winner, winnerChoice, loserChoice) {
     newLine.appendChild(log);
 }
 
+// Increments a round to the counter and page
 function startNewRound() {
     round++;
     document.getElementById("round").innerHTML = round;
 }
 
+// Checks if anyone achieved 5 points, if so sets the winner
 function checkResults() {
     if (
         (playerPoints === 5) ||
@@ -137,6 +146,7 @@ function checkResults() {
     }
 }
 
+// Highlights the winner in the results panel
 function setWinner() {
     if(playerPoints > computerPoints) {
         document.getElementById("player").style.setProperty("background-color", "yellow");
