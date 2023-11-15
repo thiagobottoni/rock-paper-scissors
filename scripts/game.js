@@ -39,38 +39,55 @@ function play(player, computer) {
             }
 }
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
+const rock = document.querySelector('#rock');
+rock.addEventListener('click', () => {
+    const computerChoice = getComputerChoice();
+    const playerChoice = "ROCK";
+    const roundResult = play(playerChoice, computerChoice);
 
-    do {
-        let playerChoice = prompt("Whats your choice? Rock, paper or scissors?").toUpperCase();
-
-        let computerChoice = getComputerChoice();
-
-        let gameResult = play(playerChoice, computerChoice);
-
-        if (gameResult === 1) {
-            console.log("You win! " + playerChoice + " beats " + computerChoice);
-            playerScore++;
+    if (roundResult === 1) {
+        console.log("Player wins");
+        addPoint("player");
+        logRoundResult("player", playerChoice, computerChoice);
+    } else
+        if (roundResult === 0) {
+            console.log("Computer wins");
+            addPoint("computer");
+            logRoundResult("computer", computerChoice, playerChoice);
         } else
-        if (gameResult === 0) {
-            console.log("You lose! " + computerChoice + " beats " + playerChoice);
-            computerScore++;
-        } else
-        if (gameResult === 2) {
-            console.log("It's a tie!");
-            playerScore++;
-            computerScore++;
-        } else {
-            console.error("Error 002: Unexpected combination");
-            break;
-        }
-    } while (
-        (playerScore < 5) && (computerScore < 5)
-    )
+            if (roundResult === 2) {
+                console.log("It's a tie!");
+                addPoint("player");
+                addPoint("computer");
+                logRoundResult("tie", playerChoice, computerChoice);
+            }
+            else {
+                console.error("Error 002: Unexpected combination");
+            }
+});
 
-    console.log("GAME RESULTS: \n PLAYER: " + playerScore + "\n COMPUTER: " + computerScore);
+// The parameter for funcion must be "player" or "computer"
+function addPoint(whom) {
+    let playerPoints = parseInt(document.getElementById(whom + "-points").innerHTML, 10);
+    document.getElementById(whom + "-points").innerHTML = playerPoints + 1;
 }
 
-game();
+// The winner parameter must be "player", "computer" or "tie"
+function logRoundResult(winner, winnerChoice, loserChoice) {
+    let logMessage = "";
+
+    if (winner === "player") {
+        logMessage = "You win! " + winnerChoice + " beats " + loserChoice;
+    } else
+        if (winner === "computer") {
+            logMessage = "You lose! " + winnerChoice + " beats " + loserChoice;
+        } else {
+            logMessage = "It's a tie!";
+        }
+
+    const tracker = document.getElementById("tracker");
+    const log = document.createTextNode(logMessage);
+    const newLine = document.createElement("br");
+    tracker.appendChild(newLine);
+    tracker.appendChild(log);
+}

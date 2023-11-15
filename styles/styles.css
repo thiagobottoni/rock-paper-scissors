@@ -1,0 +1,11 @@
+.title {
+    font-weight: bold;
+}
+
+.results-container {
+    border: 2px solid black;
+}
+
+.round-tracker {
+    border: 2px dotted gray;
+}

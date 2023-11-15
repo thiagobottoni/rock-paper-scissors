@@ -3,10 +3,34 @@
 
 <head>
     <title>Rock Paper Scissors</title>
-    <script src="scripts/game.js"></script>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <script src="scripts/game.js" defer></script>
 </head>
 
 <body>
+    <p><span class="title">ROUND 1/5</span><br>
+        What's your choice?</p>
+    <div class="choices-container">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+    <br>
+    <div class="results-container">
+        <span class="title">RESULTS:</span> <br>
+        Player: <span id="player-points">0</span> points <br>
+        Computer: <span id="computer-points">0</span> points
+    </div>
+    <br>
+    <div class="new-game">
+        <button type="button" disabled>New Game</button>
+    </div>
+    <br>
+    <div class="round-tracker">
+        <p id="tracker">
+            <span class="title">Round Tracker:</span>
+        </p>
+    </div>
 </body>
 
 </html>
