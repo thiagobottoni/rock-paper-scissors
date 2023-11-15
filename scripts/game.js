@@ -3,6 +3,7 @@ let round = 0;
 let playerPoints = 0;
 let computerPoints = 0;
 
+// Configuring button listeners to start a new round
 const buttons = document.querySelectorAll(".btn-game");
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -12,6 +13,7 @@ buttons.forEach((button) => {
     });
 });
 
+// Configuring button to start a new game and reset current game stats
 const newGame = document.querySelector("#new-game");
 newGame.addEventListener("click", () => {
     document.querySelectorAll(".btn-game").forEach(btn => {
@@ -45,7 +47,6 @@ function getComputerChoice() {
 
 function play(player, computer) {
     if (player === computer) {
-        console.log("It's a tie!");
         addPoint("player");
         addPoint("computer");
         logRoundResult("tie", player, computer);
@@ -57,7 +58,6 @@ function play(player, computer) {
             (player === "SCISSORS") && (computer === "PAPER") ||
             (player === "PAPER") && (computer === "ROCK")
         ) {
-            console.log("Player wins");
             addPoint("player");
             logRoundResult("player", player, computer);
             startNewRound();
@@ -68,7 +68,6 @@ function play(player, computer) {
                 (computer === "SCISSORS") && (player === "PAPER") ||
                 (computer === "PAPER") && (player === "ROCK")
             ) {
-                console.log("Computer wins");
                 addPoint("computer");
                 logRoundResult("computer", computer, player);
                 startNewRound();
