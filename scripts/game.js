@@ -88,7 +88,7 @@ function addPoint(whom) {
             computerPoints++;
             document.getElementById("computer-points").innerHTML = computerPoints;
         } else {
-            console.error("Trying to add points to a non-existing object.");
+            console.error("Error 003: Trying to add points to a non-existing object.");
         }
 }
 
