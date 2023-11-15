@@ -1,5 +1,7 @@
-// Initialize the global variable to count rounds
+// Initializing global variables to count rounds and points
 let round = 0;
+let playerPoints = 0;
+let computerPoints = 0;
 
 const buttons = document.querySelectorAll(".btn-game");
 buttons.forEach((button) => {
@@ -18,9 +20,9 @@ newGame.addEventListener("click", () => {
     round = 1;
     document.getElementById("round").innerHTML = round;
     resetPoints();
-    document.querySelectorAll(".log-messages").forEach(function(logs) {
+    document.querySelectorAll(".log-messages").forEach(function (logs) {
         logs.remove();
-    })
+    });
 });
 
 function getComputerChoice() {
@@ -48,6 +50,7 @@ function play(player, computer) {
         addPoint("computer");
         logRoundResult("tie", player, computer);
         startNewRound();
+        checkResults();
     } else
         if (
             (player === "ROCK") && (computer === "SCISSORS") ||
@@ -58,6 +61,7 @@ function play(player, computer) {
             addPoint("player");
             logRoundResult("player", player, computer);
             startNewRound();
+            checkResults();
         } else
             if (
                 (computer === "ROCK") && (player === "SCISSORS") ||
@@ -68,6 +72,7 @@ function play(player, computer) {
                 addPoint("computer");
                 logRoundResult("computer", computer, player);
                 startNewRound();
+                checkResults();
             } else {
                 console.error("Error 002: Unexpected combination! Expected ROCK, PAPER or SCISSORS. Received " + player + " and " + computer);
             }
@@ -75,13 +80,25 @@ function play(player, computer) {
 
 // The parameter for funcion must be "player" or "computer"
 function addPoint(whom) {
-    let playerPoints = parseInt(document.getElementById(whom + "-points").innerHTML, 10);
-    document.getElementById(whom + "-points").innerHTML = playerPoints + 1;
+    if (whom === "player") {
+        playerPoints++;
+        document.getElementById("player-points").innerHTML = playerPoints;
+    } else
+        if (whom === "computer") {
+            computerPoints++;
+            document.getElementById("computer-points").innerHTML = computerPoints;
+        } else {
+            console.error("Trying to add points to a non-existing object.");
+        }
 }
 
 function resetPoints() {
-    document.getElementById("player-points").innerHTML = 0;
-    document.getElementById("computer-points").innerHTML = 0;
+    playerPoints = 0;
+    computerPoints = 0;
+    document.getElementById("player-points").innerHTML = playerPoints;
+    document.getElementById("player").style.removeProperty("background-color");
+    document.getElementById("computer-points").innerHTML = computerPoints;
+    document.getElementById("computer").style.removeProperty("background-color");
 }
 
 // The winner parameter must be "player", "computer" or "tie"
@@ -107,4 +124,28 @@ function logRoundResult(winner, winnerChoice, loserChoice) {
 function startNewRound() {
     round++;
     document.getElementById("round").innerHTML = round;
+}
+
+function checkResults() {
+    if (
+        (playerPoints === 5) ||
+        (computerPoints === 5)
+    ) {
+        document.querySelectorAll(".btn-game").forEach(btn => {
+            btn.disabled = true;
+        });
+        setWinner();
+    }
+}
+
+function setWinner() {
+    if(playerPoints > computerPoints) {
+        document.getElementById("player").style.setProperty("background-color", "yellow");
+    } else
+    if(computerPoints > playerPoints) {
+        document.getElementById("computer").style.setProperty("background-color", "yellow");
+    } else {
+        document.getElementById("player").style.setProperty("background-color", "yellow");
+        document.getElementById("computer").style.setProperty("background-color", "yellow");
+    }
 }
