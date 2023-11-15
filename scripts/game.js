@@ -1,3 +1,12 @@
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        const computerChoice = getComputerChoice();
+        const playerChoice = button.id.toUpperCase();
+        play(playerChoice, computerChoice);
+    });
+});
+
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3) + 1;
 
@@ -18,53 +27,32 @@ function getComputerChoice() {
 
 function play(player, computer) {
     if (player === computer) {
-        return 2;
+        console.log("It's a tie!");
+        addPoint("player");
+        addPoint("computer");
+        logRoundResult("tie", player, computer);
     } else
         if (
             (player === "ROCK") && (computer === "SCISSORS") ||
             (player === "SCISSORS") && (computer === "PAPER") ||
             (player === "PAPER") && (computer === "ROCK")
         ) {
-            return 1;
+            console.log("Player wins");
+            addPoint("player");
+            logRoundResult("player", player, computer);
         } else
             if (
                 (computer === "ROCK") && (player === "SCISSORS") ||
                 (computer === "SCISSORS") && (player === "PAPER") ||
                 (computer === "PAPER") && (player === "ROCK")
             ) {
-                return 0;
+                console.log("Computer wins");
+                addPoint("computer");
+                logRoundResult("computer", computer, player);
             } else {
-                console.warn("Expected ROCK, PAPER or SCISSORS. Received " + player + " and " + computer);
-                return -1;
+                console.error("Error 002: Unexpected combination! Expected ROCK, PAPER or SCISSORS. Received " + player + " and " + computer);
             }
 }
-
-const rock = document.querySelector('#rock');
-rock.addEventListener('click', () => {
-    const computerChoice = getComputerChoice();
-    const playerChoice = "ROCK";
-    const roundResult = play(playerChoice, computerChoice);
-
-    if (roundResult === 1) {
-        console.log("Player wins");
-        addPoint("player");
-        logRoundResult("player", playerChoice, computerChoice);
-    } else
-        if (roundResult === 0) {
-            console.log("Computer wins");
-            addPoint("computer");
-            logRoundResult("computer", computerChoice, playerChoice);
-        } else
-            if (roundResult === 2) {
-                console.log("It's a tie!");
-                addPoint("player");
-                addPoint("computer");
-                logRoundResult("tie", playerChoice, computerChoice);
-            }
-            else {
-                console.error("Error 002: Unexpected combination");
-            }
-});
 
 // The parameter for funcion must be "player" or "computer"
 function addPoint(whom) {
