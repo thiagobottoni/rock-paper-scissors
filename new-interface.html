@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <script src="scripts/game.js" defer></script>
+</head>
+
+<body>
+    <h1>ROCK PAPER SCISSORS</h1>
+
+    <div class="player-container">
+        <button id="rock" class="btn-game" disabled>
+            <img src="images/rock.png" class="icon">
+        </button>
+        <img src="images/paper.png" class="icon">
+        <img src="images/scissors.png" class="icon">
+    </div>
+
+    <p class="title">ROUND <span id="round">0</span><br></p>
+    <p>What's your choice?</p>
+    <div class="choices-container">
+        <button id="rock" class="btn-game" disabled>Rock</button>
+        <button id="paper" class="btn-game" disabled>Paper</button>
+        <button id="scissors" class="btn-game" disabled>Scissors</button>
+    </div>
+    <br>
+    <div class="results-container">
+        <span class="title">RESULTS:</span> <br>
+        <span id="player">Player: <span id="player-points">0</span> points</span> <br>
+        <span id="computer">Computer: <span id="computer-points">0</span> points</span>
+    </div>
+    <br>
+    <div class="new-game">
+        <button id="new-game">New Game</button>
+    </div>
+    <br>
+    <div id="round-tracker">
+        <p id="tracker">
+            <span class="title">Round Tracker:</span>
+        </p>
+    </div>
+</body>
+
+<footer>
+    Icon sources:<br>
+    <a href="https://www.flaticon.com/free-icons/guitar">ROCK created by Freepik - Flaticon</a> <br>
+    <a href="https://www.flaticon.com/free-icons/bird">PAPER created by Freepik - Flaticon</a><br>
+    <a href="https://www.flaticon.com/free-icons/handcraft">SCISSORS created by Freepik - Flaticon</a>
+</footer>
+
+</html>

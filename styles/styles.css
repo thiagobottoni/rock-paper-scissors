@@ -9,3 +9,23 @@
 #round-tracker {
     border: 2px dotted gray;
 }
+
+.player-container {
+    border: 2px solid blue;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    width: 50%;
+}
+
+.icon {
+    width: 100px;
+    height: auto;
+    filter: grayscale(100%);
+}
+
+.icon:hover {
+    width: 110px;
+    height: auto;
+    filter: grayscale(0%);
+}
