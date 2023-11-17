@@ -15,6 +15,7 @@ gameButtons.forEach((button) => {
         const computerChoice = getComputerChoice();
         const playerChoice = button.id.toUpperCase();
         play(playerChoice, computerChoice);
+        setComputerImage(computerChoice);
     });
 });
 
@@ -30,6 +31,8 @@ newGame.addEventListener("click", () => {
         logs.remove();
     });
     document.getElementById("new-game").disabled = true;
+    document.getElementById("pc-choice").src = "images/enemy.png";
+    document.getElementById("pc-alt").innerHTML = "I am the king of Rock Paper Scissors! Wanna play again?";
 });
 
 // GAME FUNCTIONS
@@ -48,7 +51,7 @@ function getComputerChoice() {
             return "SCISSORS";
             break;
         default:
-            console.error("Error 001: Unexpected choice");
+            console.error("Error 001: Unexpected choice.");
     }
 }
 
@@ -78,7 +81,7 @@ function play(player, computer) {
                 startNewRound();
                 checkResults();
             } else {
-                console.error("Error 002: Unexpected combination! Expected ROCK, PAPER or SCISSORS. Received " + player + " and " + computer);
+                console.error("Error 002: Unexpected combination! Expected ROCK, PAPER or SCISSORS. Received " + player + " and " + computer + ".");
             }
 }
 
@@ -158,5 +161,23 @@ function setWinner() {
     } else {
         document.getElementById("player").style.setProperty("background-color", "yellow");
         document.getElementById("computer").style.setProperty("background-color", "yellow");
+    }
+}
+
+// Sets the computer choice image into the pc-container
+function setComputerImage(computerChoice) {
+    if(computerChoice === "ROCK") {
+        document.getElementById("pc-choice").src = "images/rock.png";
+        document.getElementById("pc-alt").innerHTML = "ROCK";
+    } else
+    if (computerChoice === "PAPER") {
+        document.getElementById("pc-choice").src = "images/paper.png";
+        document.getElementById("pc-alt").innerHTML = "PAPER";
+    } else
+    if (computerChoice === "SCISSORS") {
+        document.getElementById("pc-choice").src = "images/scissors.png";
+        document.getElementById("pc-alt").innerHTML = "SCISSORS";
+    } else {
+        console.error("Error 004: Unexpected choice.");
     }
 }
