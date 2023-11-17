@@ -29,6 +29,7 @@ newGame.addEventListener("click", () => {
     document.querySelectorAll(".log-messages").forEach(function (logs) {
         logs.remove();
     });
+    document.getElementById("new-game").disabled = true;
 });
 
 // GAME FUNCTIONS
@@ -143,6 +144,7 @@ function checkResults() {
             btn.disabled = true;
         });
         setWinner();
+        document.getElementById("new-game").disabled = false;
     }
 }
 

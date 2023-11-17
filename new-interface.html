@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <script src="scripts/game.js" defer></script>
+</head>
+
+<body>
+    <h1>ROCK PAPER SCISSORS</h1>
+
+    <div id="game-container">
+        <div class="player-container">
+            <div class="btn-container">
+                <input type="image" id="rock" class="btn-game" src="images/rock.png" />
+                <p>ROCK</p>
+            </div>
+            <div class="btn-container">
+                <input type="image" id="paper" class="btn-game" src="images/paper.png" />
+                <p>PAPER</p>
+            </div>
+            <div class="btn-container">
+                <input type="image" id="scissors" class="btn-game" src="images/scissors.png" />
+                <p>SCISSORS</p>
+            </div>
+        </div>
+        <div id="round-container">
+            <p class="title">ROUND <span id="round">0</span></p>
+            <button id="new-game" disabled>New Game</button>
+        </div>
+        <div class="pc-container">
+            <div class="results-container">
+                <p class="title">RESULTS:</p>
+                    <p id="player">Player: <span id="player-points">0</span> points</p>
+                    <p id="computer">Computer: <span id="computer-points">0</span> points</p>
+                </p>
+            </div>
+            <div class="pc-choice">
+                <img src="images/paper.png" id="pc-choice-img">
+                <p>CHOICE</p>
+            </div>
+        </div>
+        <div class="log-container">
+            <div id="round-tracker">
+                <p id="tracker">
+                    <span class="title">Round Tracker:</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<footer id="fixed-footer">
+    <p>thiagobottoni</p>
+</footer>
+
+</html>
