@@ -1,118 +1,191 @@
-p, h1 {
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: #162d66;
+@font-face {
+    font-family: pokemon;
+    src: url(../fonts/pokemon.ttf);
 }
 
-.title {
-    font-weight: bold;
+* {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    font-family: pokemon, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #fff;
 }
 
-#new-game:disabled {
-    display: none;
+body {
+    text-align: center;
+    background-color: #d1ddfa;
 }
 
-#game-container {
+.game-container {
+    border: 1px solid #000;
     display: flex;
     flex-direction: column;
-    max-width: 600px;
-    margin: 50px auto;
-}
-
-.player-container {
-    border: 3px solid #3e66c9;
-    border-radius: 5px;
-    padding: 10px;
-    max-height: 180px;
-    display: flex;
-    justify-content: space-evenly;
     flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+    margin: 2% auto;
+    width: 700px;
+    height: auto;
+    background-color: #fff9f9;
+    border-radius: 10px;
+    box-shadow: 5px 10px;
+    padding: 50px 0px;
+    color: #000;
 }
 
-.pc-container {
-    border: 3px solid #3e66c9;
-    border-radius: 5px;
-    padding: 10px;
-    max-height: 180px;
+.card {
+    border: 2px solid #3e66c9;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    height: 180px;
+    border-radius: 10px;
 }
 
-.log-container {
-    border: 2px dotted #3e66c9;
-    border-radius: 5px;
-    padding: 10px;
+#fix-flexbox {
+    margin-right: 8%;
+}
+
+#round-card {
     display: flex;
-    flex-wrap: nowrap;
-    margin-top: 50px;;
+    border: none;
+    height: 30px;
 }
 
-.btn-container {
-    display: inline-block;
-    margin: 10px 20px 10px 20px;
-    width: 105px;
-    height: 115px;
+.round-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3e66c9;
+    font-size: x-large;
 }
 
-.btn-container p {
-    visibility: hidden;
-    text-align: center;
-    font-size: 10px;
-    position: relative;
-    margin-top: 115px;
+#round {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3e66c9;
+    font-size: x-large;
+    width: 50px;
 }
 
-.btn-container:hover p {
-    visibility: visible;
+.score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3e66c9;
+}
+
+#player-points,
+#computer-points {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3e66c9;
+    width: 40px;
+}
+
+.card-info {
+    border-left: 2px solid #3e66c9;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    max-width: 40px;
+    background-color: #3e66c9;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
 }
 
 .btn-game {
     width: 100px;
     height: auto;
     opacity: 50%;
-    position: absolute;
 }
 
-.btn-game:hover, .btn-game:focus {
+.btn-game:hover:enabled,
+.btn-game:focus {
     width: 105px;
     height: auto;
     opacity: 100%;
 }
 
 .btn-game:disabled {
-    width: 100px;
-    height: auto;
     filter: grayscale(100%);
+    cursor: not-allowed;
 }
 
-.pc-choice {
-    margin: 10px 20px 10px 20px;
+.btn-container {
+    display: inline-block;
     width: 105px;
     height: 115px;
 }
 
-.pc-choice p {
-    font-size: 10px;
-    text-align: center;
-    margin-top: 5px;
+.btn-container p {
+    display: inline-block;
+    font-size: 8px;
+    color: #3e66c9;
+    width: 100px;
+    height: 20px;
 }
 
-#pc-choice-img {
+#new-game {
+    width: 150px;
+    height: 30px;
+    background-color: #1cbb1c;
+    border-color: #149c14;
+    opacity: 80%;
+}
+
+#new-game:disabled {
+    filter: grayscale(100%);
+    opacity: 30%;
+    cursor: not-allowed;
+}
+
+#new-game:hover:enabled {
+    opacity: 100%;
+    cursor: pointer;
+}
+
+#round-tracker {
+    border: 2px dotted #3e66c9;
+    height: auto;
+    padding: 5px;
+}
+
+.title {
+    align-self: flex-start;
+    color: #3e66c9;
+    font-size: small;
+}
+
+.log-messages {
+    display: flex;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 10px;
+    color: #3e66c9;
+}
+
+.pc-container {
+    padding-top: 12%;
+}
+
+.pc-container p {
+    display: inline-block;
+    font-size: 8px;
+    color: #3e66c9;
+    height: 20px;
+}
+
+#pc-choice {
     width: 100px;
     height: auto;
-}
-
-#round-container {
-    border-radius: 5px;
-    padding: 10px;
-    max-height: 180px;
-    display: inline-block;
-    text-align: center;
-}
-
-.results-container {
-    border-right: 3px dashed #3e66c9;
-    padding: 0px 80px 5px 15px;
 }
 
 #fixed-footer {
@@ -121,11 +194,16 @@ p, h1 {
     bottom: 0;
     width: 100%;
     height: 30px;
-    background-color: #162d66;
+    background-color: #3e66c9;
     text-align: center;
 }
 
 #fixed-footer p {
+    font-size: 10px;
     color: #fff;
-    margin: 2px;
+    margin: 8px;
+}
+
+#fixed-footer p a {
+    text-decoration: none;
 }
