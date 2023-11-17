@@ -1,31 +1,131 @@
+p, h1 {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #162d66;
+}
+
 .title {
     font-weight: bold;
 }
 
-.results-container {
-    border: 2px solid black;
+#new-game:disabled {
+    display: none;
 }
 
-#round-tracker {
-    border: 2px dotted gray;
+#game-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 50px auto;
 }
 
 .player-container {
-    border: 2px solid blue;
+    border: 3px solid #3e66c9;
     border-radius: 5px;
     padding: 10px;
-    margin: auto;
-    width: 50%;
+    max-height: 180px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
 }
 
-.icon {
+.pc-container {
+    border: 3px solid #3e66c9;
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 180px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+.log-container {
+    border: 2px dotted #3e66c9;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 50px;;
+}
+
+.btn-container {
+    display: inline-block;
+    margin: 10px 20px 10px 20px;
+    width: 105px;
+    height: 115px;
+}
+
+.btn-container p {
+    visibility: hidden;
+    text-align: center;
+    font-size: 10px;
+    position: relative;
+    margin-top: 115px;
+}
+
+.btn-container:hover p {
+    visibility: visible;
+}
+
+.btn-game {
+    width: 100px;
+    height: auto;
+    opacity: 50%;
+    position: absolute;
+}
+
+.btn-game:hover, .btn-game:focus {
+    width: 105px;
+    height: auto;
+    opacity: 100%;
+}
+
+.btn-game:disabled {
     width: 100px;
     height: auto;
     filter: grayscale(100%);
 }
 
-.icon:hover {
-    width: 110px;
+.pc-choice {
+    margin: 10px 20px 10px 20px;
+    width: 105px;
+    height: 115px;
+}
+
+.pc-choice p {
+    font-size: 10px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#pc-choice-img {
+    width: 100px;
     height: auto;
-    filter: grayscale(0%);
+}
+
+#round-container {
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 180px;
+    display: inline-block;
+    text-align: center;
+}
+
+.results-container {
+    border-right: 3px dashed #3e66c9;
+    padding: 0px 80px 5px 15px;
+}
+
+#fixed-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background-color: #162d66;
+    text-align: center;
+}
+
+#fixed-footer p {
+    color: #fff;
+    margin: 2px;
 }

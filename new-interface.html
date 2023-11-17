@@ -10,44 +10,49 @@
 <body>
     <h1>ROCK PAPER SCISSORS</h1>
 
-    <div class="player-container">
-        <button id="rock" class="btn-game" disabled>
-            <img src="images/rock.png" class="icon">
-        </button>
-        <img src="images/paper.png" class="icon">
-        <img src="images/scissors.png" class="icon">
-    </div>
-
-    <p class="title">ROUND <span id="round">0</span><br></p>
-    <p>What's your choice?</p>
-    <div class="choices-container">
-        <button id="rock" class="btn-game" disabled>Rock</button>
-        <button id="paper" class="btn-game" disabled>Paper</button>
-        <button id="scissors" class="btn-game" disabled>Scissors</button>
-    </div>
-    <br>
-    <div class="results-container">
-        <span class="title">RESULTS:</span> <br>
-        <span id="player">Player: <span id="player-points">0</span> points</span> <br>
-        <span id="computer">Computer: <span id="computer-points">0</span> points</span>
-    </div>
-    <br>
-    <div class="new-game">
-        <button id="new-game">New Game</button>
-    </div>
-    <br>
-    <div id="round-tracker">
-        <p id="tracker">
-            <span class="title">Round Tracker:</span>
-        </p>
+    <div id="game-container">
+        <div class="player-container">
+            <div class="btn-container">
+                <input type="image" id="rock" class="btn-game" src="images/rock.png" />
+                <p>ROCK</p>
+            </div>
+            <div class="btn-container">
+                <input type="image" id="paper" class="btn-game" src="images/paper.png" />
+                <p>PAPER</p>
+            </div>
+            <div class="btn-container">
+                <input type="image" id="scissors" class="btn-game" src="images/scissors.png" />
+                <p>SCISSORS</p>
+            </div>
+        </div>
+        <div id="round-container">
+            <p class="title">ROUND <span id="round">0</span></p>
+            <button id="new-game" disabled>New Game</button>
+        </div>
+        <div class="pc-container">
+            <div class="results-container">
+                <p class="title">RESULTS:</p>
+                    <p id="player">Player: <span id="player-points">0</span> points</p>
+                    <p id="computer">Computer: <span id="computer-points">0</span> points</p>
+                </p>
+            </div>
+            <div class="pc-choice">
+                <img src="images/paper.png" id="pc-choice-img">
+                <p>CHOICE</p>
+            </div>
+        </div>
+        <div class="log-container">
+            <div id="round-tracker">
+                <p id="tracker">
+                    <span class="title">Round Tracker:</span>
+                </p>
+            </div>
+        </div>
     </div>
 </body>
 
-<footer>
-    Icon sources:<br>
-    <a href="https://www.flaticon.com/free-icons/guitar">ROCK created by Freepik - Flaticon</a> <br>
-    <a href="https://www.flaticon.com/free-icons/bird">PAPER created by Freepik - Flaticon</a><br>
-    <a href="https://www.flaticon.com/free-icons/handcraft">SCISSORS created by Freepik - Flaticon</a>
+<footer id="fixed-footer">
+    <p>thiagobottoni</p>
 </footer>
 
 </html>
