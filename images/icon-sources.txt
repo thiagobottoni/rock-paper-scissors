@@ -6,3 +6,6 @@ Paper
 
 Scissors
 <a href="https://www.flaticon.com/free-icons/handcraft" title="handcraft icons">Handcraft icons created by Freepik - Flaticon</a>
+
+Enemy
+<a href="https://www.flaticon.com/free-icons/death" title="death icons">Death icons created by Eucalyp - Flaticon</a>
